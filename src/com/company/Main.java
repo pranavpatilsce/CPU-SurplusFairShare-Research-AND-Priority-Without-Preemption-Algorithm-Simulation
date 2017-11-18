@@ -1,9 +1,8 @@
 package com.company;
 import java.util.Random;
-//Random rndx = new Random(1);
-//rndx.nextInt()
 
-//priority scheduler w/o premption (queue)
+/* Priority Scheduler without Pre-emption */
+
 class process{
     int id = 0;
     int burst  = 0;
@@ -34,12 +33,15 @@ class process{
 class scheduler{
     int N = 0;
     int time = 0;
-    int waiting = 0; //average waiting time
-    int turnaround = 0; //average turnaround time
+    int waiting = 0; //Todo: Find average waiting time
+    int turnaround = 0; //Todo: Find average turnaround time
     int head = 0;
     int tail = 0;
 
     scheduler(int number) {
+        // Todo: Loop run number with different seeds
+        // Todo: Iterate for N = 100 and N = 500
+
         N = number;
         tail = number - 1;
         process[] processList;
@@ -67,7 +69,11 @@ class scheduler{
         //Initialize time to first arrived process time
         time = processList[head].arrival;
 
-        //Sort loop
+        /* Sorting Algorithm
+        * After sorting by arrival time, head and tail are used to
+        * indicate the "subarray" that the CPU is sorting by priority
+        * with respect to the time that has elapsed. */
+
         while(head != 49) {
             //Find tail
             for (int i = 0; i < 50; i++) {
@@ -87,24 +93,21 @@ class scheduler{
                     }
                 }
             }
-            time = time + processList[head].burst;
-            head = head + 1;
+            time = time + processList[head].burst; // Timer after burst
+            head = head + 1; //Increment head
         }
 
         //Print Sorted
+        // Todo: Format output as table
         for (int i = 0; i < N ; i++){
             processList[i].print();
         }
     }
 }
 
-
 public class Main {
 
     public static void main(String[] args) {
         scheduler test_scheduler = new scheduler(50);
-
-        //report waiting time
-        //report turnaround time
     }
 }
