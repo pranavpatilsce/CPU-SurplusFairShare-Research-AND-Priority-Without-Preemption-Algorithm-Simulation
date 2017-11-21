@@ -9,8 +9,6 @@ public class Main {
 
     static void printTableHeader() {
         System.out.print("|\tN\t|");
-//        System.out.print("N");
-//        System.out.print("\t|");
         System.out.print("\tRun Number\t");
         System.out.print("|");
         System.out.print("\tWaiting Time \t|");
@@ -37,14 +35,7 @@ public class Main {
                 }
 
                 System.out.println("\nTest Case " + testCaseNumber++);
-//                System.out.println(numberOfProcesses + " is your number. Running...");
-                System.out.println(" ");
-                System.out.print("|\tN");
-                System.out.print("\t|");
-                System.out.print("\tRun Number\t");
-                System.out.print("|");
-                System.out.print("\tWaiting Time \t|");
-                System.out.println("\tTurnaround Time\t|");
+                printTableHeader();
                 Scheduler test4 = new Scheduler(numberOfProcesses);
             }
         }
