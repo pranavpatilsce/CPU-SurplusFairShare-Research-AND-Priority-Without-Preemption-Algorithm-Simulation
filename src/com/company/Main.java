@@ -125,7 +125,7 @@ class scheduler{
             System.out.print("\t|");
             System.out.print("\t" + waiting + " ns \t");
             System.out.print("|");
-            System.out.print("\t" + turnaround + " ns \t");
+            System.out.print("\t" + turnaround + " ns\t");
             System.out.println("|");
         }
     }
@@ -135,6 +135,7 @@ public class Main {
 
     public static void main(String[] args)
     {
+        
         System.out.print("|\t");
         System.out.print("N");
         System.out.print("\t|");
@@ -145,5 +146,19 @@ public class Main {
         scheduler test_scheduler = new scheduler(50);
         scheduler test2 = new scheduler( 100);
         scheduler test3 = new scheduler( 150);
+        
+        for (String s: args){
+            System.out.println(s + "is your number. Running...");
+            System.out.println(" ");
+            System.out.print("|");
+            System.out.print("   Test Case ");
+            System.out.print("\t|");
+            System.out.print("\tRun Number\t");
+            System.out.print("|");
+            System.out.print("\tWaiting Time \t|");
+            System.out.println("\tTurnaround Time\t|");
+            scheduler test4 = new scheduler(500);
+        }
+        
     }
 }
