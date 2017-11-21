@@ -218,7 +218,7 @@ public class Main {
 
     private static void printWelcomeMessage() {
         System.out.println("\nProject: Simulation of Priority Scheduler without Preemption.");
-        System.out.println("\tMade by Matthew Chuw, Andrew Hu, Pranav Patil, & Dmitry Sokolov.");
+        System.out.println("\tMade by Matthew Chew, Andrew Hu, Pranav Patil, & Dmitry Sokolov.");
         System.out.println("\tCMPE 142-03 Fall 2017.\n");
     }
 }
