@@ -1,4 +1,4 @@
-//package com.company;
+package com.company;
 import java.util.Random;
 
 /* Priority Scheduler without Pre-emption */
@@ -118,11 +118,15 @@ class scheduler{
 //                processList[i].print();
 //            }
             //Table Output
-            System.out.print(N);
-            System.out.print("\t\t" + (k+1));
-            System.out.print("\t\t\t" + waiting + " ns");
-            System.out.println("\t\t" + turnaround + "ns");
-
+            System.out.print("|\t");
+            System.out.print(N + "\t");
+            System.out.print("|");
+            System.out.print("\t" + (k+1) + "\t");
+            System.out.print("\t|");
+            System.out.print("\t" + waiting + " ns \t");
+            System.out.print("|");
+            System.out.print("\t" + turnaround + " ns \t");
+            System.out.println("|");
         }
     }
 }
@@ -131,10 +135,13 @@ public class Main {
 
     public static void main(String[] args)
     {
+        System.out.print("|\t");
         System.out.print("N");
-        System.out.print("\t\tRun Number\t\t");
-        System.out.print("Waiting Time");
-        System.out.println("\t\tTurnaround Time\t\t");
+        System.out.print("\t|");
+        System.out.print("\tRun Number\t");
+        System.out.print("|");
+        System.out.print("\tWaiting Time \t|");
+        System.out.println("\tTurnaround Time\t|");
         scheduler test_scheduler = new scheduler(50);
         scheduler test2 = new scheduler( 100);
         scheduler test3 = new scheduler( 150);
