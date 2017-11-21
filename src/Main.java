@@ -1,5 +1,125 @@
 
 
+/* Priority Scheduler without Pre-emption */
+
+import java.util.Random;
+
+class Scheduler {
+    final static int NUMBER_RUN_TIMES = 5;
+
+    final static int CPU_BURST_TIME_MIN = 1;
+    final static int CPU_BURST_TIME_MAX = 100;
+
+    final static int ARRIVAL_TIME_MIN = 1;
+    final static int ARRIVAL_TIME_MAX = 1000;
+
+    final static int PRIORITY_MIN = 1;
+    final static int PRIORITY_MAX = 10;
+
+
+    /**
+     * Static simulateWith method
+     * @param numberOfProcesses - the number of processes to simulate
+     *
+     * Simulate the scheduler with given number of processes and output results
+     * to the system output stream
+     */
+    static void simulateWith(int numberOfProcesses) {
+        // array of processes to hold
+        Process[] processList = new Process[numberOfProcesses];
+
+        float waiting = 0;
+        float turnaround = 0;
+
+        // instantiate all processes
+        for(int k = 0; k < NUMBER_RUN_TIMES; k++) {
+            Random rng = new Random(k); // initialize a random generator with different seed
+
+            // create N number of processes
+            for (int i = 0; i < numberOfProcesses; i++) {
+                int CPUBurst = rng.nextInt(CPU_BURST_TIME_MAX - CPU_BURST_TIME_MIN + 1) + CPU_BURST_TIME_MIN;
+                int arrivalTime = rng.nextInt(ARRIVAL_TIME_MAX - ARRIVAL_TIME_MIN + 1) + ARRIVAL_TIME_MIN;
+                int priority = rng.nextInt(PRIORITY_MAX - PRIORITY_MIN + 1) + PRIORITY_MIN;
+
+                processList[i] = new Process(i, CPUBurst, arrivalTime, priority);
+            }
+
+            // sort by arrival time
+            for (int i = 0; i < numberOfProcesses; i++) {
+                for (int j = 0; j < numberOfProcesses; j++) {
+                    if (processList[i].arrival < processList[j].arrival) {
+                        Process temp = new Process(processList[i]);
+                        processList[i] = processList[j];
+                        processList[j] = temp;
+                    }
+                }
+            }
+
+
+            // initialize time to first arrived Process time
+            int headIndex = 0;
+            int tailIndex = numberOfProcesses - 1;
+            int time = processList[headIndex].arrival;
+
+            /* Sorting Algorithm
+            * After sorting by arrival time, headIndex and tailIndex are used to
+            * indicate the "sub-array" that the CPU is sorting by priority
+            * with respect to the time that has elapsed. */
+
+            while (headIndex != numberOfProcesses -1) {
+
+                // find tail
+                for (int i = 0; i < numberOfProcesses; i++) {
+                    if (processList[i].arrival <= time) {
+                        tailIndex = i;
+                    } else {
+                        break;
+                    }
+                }
+                // sort by Priority (lower number means higher priority)
+                for (int i = headIndex; i <= tailIndex; i++) {
+                    for (int j = headIndex; j <= tailIndex; j++) {
+                        if (processList[i].priority < processList[j].priority) {
+                            Process temp = new Process(processList[i]);
+                            processList[i] = processList[j];
+                            processList[j] = temp;
+                        }
+                    }
+                }
+                time = time + processList[headIndex].burst; // timer after burst
+                headIndex = headIndex + 1; // increment head
+            }
+
+            time = processList[0].arrival;
+
+            // calculate wait time and turnaround time
+            for (int i = 0; i < numberOfProcesses; i++)
+            {
+                waiting = waiting + time - processList[i].arrival;
+                time = time + processList[i].burst;
+                turnaround = turnaround + time - processList[i].arrival;
+            }
+
+            turnaround = turnaround / numberOfProcesses;
+            waiting = waiting / numberOfProcesses;
+
+            // output the results
+            System.out.print("|\t");
+            System.out.print(numberOfProcesses + "\t");
+            System.out.print("|");
+            System.out.print("\t" + (k+1) + "\t");
+            System.out.print("\t|");
+            System.out.print("\t" + waiting + " ns \t");
+            System.out.print("|");
+            System.out.print("\t" + turnaround + " ns\t");
+            System.out.println("|");
+        }
+    }
+
+}
+
+
+
 public class Main {
 
     static void printTableHeader() {
