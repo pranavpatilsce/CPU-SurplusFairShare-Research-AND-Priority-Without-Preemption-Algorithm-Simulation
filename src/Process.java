@@ -4,20 +4,22 @@
  * Emulate the process as a object with specific data variables
  */
 
-public class Process {
+class Process {
     int id = 0;
     int burst  = 0;
     int arrival = 0;
     int priority = 0;
 
-    public Process(int identifier, int aBurst, int anArrival, int aPriority ){
+    // Parametrized Constructor
+    Process(int identifier, int aBurst, int anArrival, int aPriority ){
         id = identifier;
         burst  = aBurst;
         arrival = anArrival;
         priority = aPriority;
     }
 
-    public Process(Process p) {
+    // Copy Constructor
+    Process(Process p) {
         id = p.id;
         burst = p.burst;
         arrival = p.arrival;

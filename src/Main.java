@@ -36,11 +36,10 @@ public class Main {
                     System.out.println("Wrong argument!");
                 }
 
-
+                System.out.println("\nTest Case " + testCaseNumber++);
 //                System.out.println(numberOfProcesses + " is your number. Running...");
                 System.out.println(" ");
                 System.out.print("|\tN");
-//                System.out.print("   Test Case " + testCaseNumber++);
                 System.out.print("\t|");
                 System.out.print("\tRun Number\t");
                 System.out.print("|");
