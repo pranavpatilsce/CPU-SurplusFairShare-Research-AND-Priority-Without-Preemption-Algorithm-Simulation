@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cmpe142_new" default="compile.module.cmpe142_new">
+  <dirname property="module.cmpe142_new.basedir" file="${ant.file.module_cmpe142_new}"/>
+  
+  <property name="module.jdk.home.cmpe142_new" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cmpe142_new" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cmpe142_new" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cmpe142_new" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="cmpe142_new.output.dir" value="${module.cmpe142_new.basedir}/out/production/cmpe142_new"/>
+  <property name="cmpe142_new.testoutput.dir" value="${module.cmpe142_new.basedir}/out/test/cmpe142_new"/>
+  
+  <path id="cmpe142_new.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cmpe142_new.module.production.classpath">
+    <path refid="${module.jdk.classpath.cmpe142_new}"/>
+    <path refid="library.arquillian_testng:release.classpath"/>
+    <path refid="library.arquillian_junit:release.classpath"/>
+  </path>
+  
+  <path id="cmpe142_new.runtime.production.module.classpath">
+    <pathelement location="${cmpe142_new.output.dir}"/>
+    <path refid="library.arquillian_testng:release.classpath"/>
+    <path refid="library.arquillian_junit:release.classpath"/>
+  </path>
+  
+  <path id="cmpe142_new.module.classpath">
+    <path refid="${module.jdk.classpath.cmpe142_new}"/>
+    <pathelement location="${cmpe142_new.output.dir}"/>
+    <path refid="library.arquillian_testng:release.classpath"/>
+    <path refid="library.arquillian_junit:release.classpath"/>
+  </path>
+  
+  <path id="cmpe142_new.runtime.module.classpath">
+    <pathelement location="${cmpe142_new.testoutput.dir}"/>
+    <pathelement location="${cmpe142_new.output.dir}"/>
+    <path refid="library.arquillian_testng:release.classpath"/>
+    <path refid="library.arquillian_junit:release.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cmpe142_new">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cmpe142_new">
+    <patternset refid="excluded.from.module.cmpe142_new"/>
+  </patternset>
+  
+  <path id="cmpe142_new.module.sourcepath">
+    <dirset dir="${module.cmpe142_new.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.cmpe142_new" depends="compile.module.cmpe142_new.production,compile.module.cmpe142_new.tests" description="Compile module cmpe142_new"/>
+  
+  <target name="compile.module.cmpe142_new.production" depends="register.custom.compilers" description="Compile module cmpe142_new; production classes">
+    <mkdir dir="${cmpe142_new.output.dir}"/>
+    <javac2 destdir="${cmpe142_new.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cmpe142_new}/javac">
+      <compilerarg line="${compiler.args.cmpe142_new}"/>
+      <bootclasspath refid="cmpe142_new.module.bootclasspath"/>
+      <classpath refid="cmpe142_new.module.production.classpath"/>
+      <src refid="cmpe142_new.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cmpe142_new"/>
+    </javac2>
+    
+    <copy todir="${cmpe142_new.output.dir}">
+      <fileset dir="${module.cmpe142_new.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cmpe142_new.tests" depends="register.custom.compilers,compile.module.cmpe142_new.production" description="compile module cmpe142_new; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.cmpe142_new" description="cleanup module">
+    <delete dir="${cmpe142_new.output.dir}"/>
+    <delete dir="${cmpe142_new.testoutput.dir}"/>
+  </target>
+</project>
