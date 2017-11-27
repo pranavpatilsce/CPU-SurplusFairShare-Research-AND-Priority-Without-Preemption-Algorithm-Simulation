@@ -8,4 +8,4 @@ Research Project members: Dmitry Sokolov, Andrew Hu, Matthew Chew, and Pranav Pa
 Original git repository:
 https://bitbucket.org/InnovationSF/cmpe142.git
 
-You may check the commits or the branches tabs to the left side of the bit bucket screen and you will find all the commits and contributions made by all team members.
+You may check the commits or the branches tabs to the left side of the bitbucket screen and you will find the commits and contributions made by all team members.
