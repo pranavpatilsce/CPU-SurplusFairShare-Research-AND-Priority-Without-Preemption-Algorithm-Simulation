@@ -1,4 +1,5 @@
-# CPUSurplusFairShare-Algorithm-Simulation
+# CPUSurplusFairShare-Algorithm-Research
+# CPUPriorityWithoutPreemption-Algorithm-Simulation
 
 This project was a simulation of CPU Surplus Fair Share (SFS) algorithm.
 
@@ -9,3 +10,9 @@ Original git repository:
 https://bitbucket.org/InnovationSF/cmpe142.git
 
 You may check the commits or the branches tabs to the left side of the bitbucket screen and you will find the commits and contributions made by all team members.
+
+Below is the design document for Priority without preemption:
+https://docs.google.com/document/d/1pkh8e13e4_b7dHSlZR4fStzUbXAfGc0lTU6YCj8dxcs/edit?usp=sharing
+
+Below is the priority without preemption document:
+https://docs.google.com/document/d/1w1LtJJVKJiilUYkDrLaN13ObzpymqQADl0NR-pvAZxE/edit?usp=sharing
